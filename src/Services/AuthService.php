@@ -86,11 +86,15 @@ class AuthService
     private function setSession(): void
     {
         if (!$this->request->getSession()) {
-            $session = new \Symfony\Component\HttpFoundation\Session\Session();
-            $session->start();
-            $this->request->setSession($session);
+            $this->request->setSession(
+                new \Symfony\Component\HttpFoundation\Session\Session()
+            );
         }
 
         $this->session = $this->request->getSession();
+
+        if (!$this->session->isStarted()) {
+            $this->session->start();
+        }
     }
 }
