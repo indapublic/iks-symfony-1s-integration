@@ -75,6 +75,9 @@ class AuthService
      */
     public function auth(): void
     {
+        //  Disable auth check until session id rewritten bug exists.
+        return;
+
         $login = $this->config->getLogin();
         $user = $this->session->get(self::SESSION_KEY.'_auth', null);
 
