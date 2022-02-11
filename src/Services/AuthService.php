@@ -53,7 +53,7 @@ class AuthService
         ) {
             $this->session->save();
             $response = "success\n";
-            $response .= "laravel_session\n";
+            $response .= "PHPSESSID\n";
             $response .= $this->session->getId()."\n";
             $response .= 'timestamp='.time();
             if ($this->session instanceof SessionInterface) {
