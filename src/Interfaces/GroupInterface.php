@@ -17,5 +17,5 @@ interface GroupInterface extends IdentifierInterface
      *
      * @return void
      */
-    public static function createTree1c($groups);
+    public function createTree1c($groups);
 }

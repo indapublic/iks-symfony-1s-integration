@@ -79,14 +79,14 @@ class CategoryService
         $this->beforeProductsSync();
 
         if ($groupClass = $this->getGroupClass()) {
-            $groupClass::createTree1c($commerce->classifier->getGroups());
+        	$groupClass->createTree1c($commerce->classifier->getGroups());
         }
 
         $productClass = $this->getProductClass();
-        $productClass::createProperties1c($commerce->classifier->getProperties());
+        $productClass->createProperties1c($commerce->classifier->getProperties());
         foreach ($commerce->catalog->getProducts() as $product) {
-            if (!$model = $productClass::createModel1c($product)) {
-                throw new Exchange1CException("Модель продукта не найдена, проверьте реализацию $productClass::createModel1c");
+            if (!$model = $productClass->createModel1c($product)) {
+                throw new Exchange1CException("Модель продукта не найдена, проверьте реализацию $productClass->createModel1c");
             }
             $this->parseProduct($model, $product);
             $this->_ids[] = $model->getPrimaryKey();
